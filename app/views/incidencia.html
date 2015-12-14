@@ -1,0 +1,36 @@
+<div class="container">
+
+  <div class="page-header"><h1>Gestión de Incidencias</h1></div>
+   
+   <div class="well">
+		<form role="form" ng-submit="update(incidencia)">
+		
+			  <fieldset class="form-group col-sm-12">
+				<label for="descripcion">Descripción</label>
+				<textarea class="form-control" id="descripcion" rows="" ng-model="incidencia.descripcion" placeholder="Cual es el problema?"></textarea>
+			  </fieldset>
+			  <fieldset class="form-group col-sm-6">
+				<label for="importancia">Nivel de importancia</label>
+				<select class="form-control id="importancia" ng-model="incidencia.importancia" ng-options="importancia for importancia in importancias">
+					  <option value="">-- selecciona la importancia --</option>
+				</select>
+			  </fieldset>
+			  <fieldset class="form-group col-sm-6">
+				<label for="estado">Estado</label>
+				<select class="form-control" id="estado" ng-model="incidencia.estado" ng-options="estado for estado in estados">
+					  <option value="">-- selecciona un estado --</option>
+				</select>
+				</select>
+			  </fieldset>
+			  <fieldset class="form-group col-sm-12">
+				<label for="comentario">Comentario</label>
+				<textarea class="form-control" id="comentario" rows="" ng-model="comentario" placeholder="Por qué se ha cambiado el estado?"></textarea>
+			  </fieldset>
+
+			  <button type="submit" class="btn btn-success">Guardar</button>
+			  <a class="btn btn-link" ng-href="#/incidenciar/" aria-label="Volver">Volver</button>
+		</form>
+   </div>
+ 
+
+</div>

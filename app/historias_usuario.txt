@@ -1,0 +1,42 @@
+
+v1.0
+
+COMO usuario
+PARA crear una incidencia
+QUIERO 
+- introducir una descripción
+- seleccionar un nivel de importancia [estado==abierto]
+- que se validen las entradas
+- que se grabe la fecha y el usuario transparentemente
+
+COMO usuario
+PARA modificar el estado de una incidencia
+QUIERO 
+- seleccionar la incidencia de una lista
+- seleccionar el estado
+- volver a la lista de incidencias
+
+COMO usuario
+QUIERO 
+- ver el historial de cambios de estado de una incidencia
+
+v1.1
+
+COMO usuario
+PARA crear una incidencia
+QUIERO 
+- introducir una descripción
+- seleccionar un nivel de importancia [estado==abierto]
+- que se validen las entradas
+- que se grabe la fecha y el usuario transparentemente
+
+COMO usuario
+PARA modificar el estado de una incidencia
+QUIERO 
+- seleccionar la incidencia de una lista
+- seleccionar el estado
+- volver a la lista de incidencias
+- que la transicion sea válida
+
+
+

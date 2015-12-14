@@ -1,0 +1,77 @@
+<div class="container">
+
+  <div class="page-header"><h1>Incidencias</h1></div>
+   
+   <div class="well">
+		<form role="form" ng-submit="create(incidencia)">
+		
+			  <fieldset class="form-group col-sm-12">
+				<label for="descripcion">Descripción</label>
+				<textarea class="form-control" id="descripcion" rows="" ng-model="incidencia.descripcion" placeholder="Cual es el problema?"></textarea>
+			  </fieldset>
+			  <fieldset class="form-group col-sm-6">
+				<label for="importancia">Nivel de importancia</label>
+				<select class="form-control id="importancia" ng-model="incidencia.importancia" ng-options="importancia for importancia in importancias">
+					  <option value="">-- selecciona la importancia --</option>
+				</select>
+			  </fieldset>
+			  <fieldset class="form-group col-sm-6">
+				<label for="estado">Estado</label>
+				<select class="form-control" id="estado" ng-model="incidencia.estado" ng-options="estado for estado in estados">
+					  <option value="">-- selecciona un estado --</option>
+				</select>
+				</select>
+			  </fieldset>
+
+			  <button type="submit" class="btn btn-success">Crear</button>
+		</form>
+   </div>
+   
+   
+     
+  <input ng-show="incidencias.length>0" ng-model="query" type="text" placeholder="Escribe para filtrar..." />
+
+  <div class="table-responsive"> 
+
+  <table class="table table-striped small">
+  	<thead>
+		<tr>
+			<th class="hidden-xs hidden-sm col-md-1">Id</th>
+            <th class="col-sm-5">Descripción</th>
+            <th class="col-sm-2">Fecha</th>
+            <th class="col-sm-1">Importancia</th>
+			<th class="col-sm-1">Estado</th>
+			<th class="col-md-1">Usuario</th>
+			<th class="col-sm-2">Opciones</th>
+        </tr>
+	</thead>
+	<tbody>
+	   <tr ng-repeat="incidencia in incidencias | filter:query | orderBy:'-fechaCreacion'">
+		   <td class="hidden-xs hidden-sm col-md-1">
+			  <span ng-bind="incidencia.id">{{query}}
+		   </td>
+		   <td class="col-sm-5">
+			   <span ng-bind="incidencia.descripcion">
+		   </td>
+		   <td class="col-sm-2">
+			   <span ng-bind="incidencia.fechaCreacion">
+		   </td>  
+		   <td class="col-sm-1">
+			   <span ng-bind="incidencia.importancia">
+		   </td>
+		   <td class="col-sm-1">
+			   <span ng-bind="incidencia.estado">
+		   </td>		   
+		   <td class="col-md-1">
+			  <span ng-bind="incidencia.usuario">
+		   </td>      
+			<td class="input-group-btn col-sm-2">
+				<a class="btn btn-info btn-xs" ng-href="#/modificar/{{incidencia.id}}"><span class="glyphicon glyphicon-pencil"></span></button>
+				<a class="btn btn-warning btn-xs" ng-href="#/historia/{{incidencia.id}}"><span class="glyphicon glyphicon-th-list"></span></button>
+			</td>				
+	   </tr>
+	   	<tbody>
+
+	</table>
+</div>
+</div>
