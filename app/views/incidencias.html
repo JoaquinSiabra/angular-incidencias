@@ -4,25 +4,20 @@
    
    <div class="well">
 		<form role="form" ng-submit="create(incidencia)">
-		
+			  <fieldset class="form-group col-sm-12">
+				<label for="resumen">Resumen</label>
+				<textarea class="form-control" id="resumen" rows="" ng-model="incidencia.resumen" required="true" placeholder="Nombre de la incidencia"></textarea>
+			  </fieldset>
 			  <fieldset class="form-group col-sm-12">
 				<label for="descripcion">Descripción</label>
-				<textarea class="form-control" id="descripcion" rows="" ng-model="incidencia.descripcion" placeholder="Cual es el problema?"></textarea>
+				<textarea class="form-control" id="descripcion" rows="" ng-model="incidencia.descripcion" required="true" placeholder="Cual es el problema?"></textarea>
 			  </fieldset>
-			  <fieldset class="form-group col-sm-6">
+			  <fieldset class="form-group col-sm-12">
 				<label for="importancia">Nivel de importancia</label>
 				<select class="form-control id="importancia" ng-model="incidencia.importancia" ng-options="importancia for importancia in importancias">
 					  <option value="">-- selecciona la importancia --</option>
 				</select>
-			  </fieldset>
-			  <fieldset class="form-group col-sm-6">
-				<label for="estado">Estado</label>
-				<select class="form-control" id="estado" ng-model="incidencia.estado" ng-options="estado for estado in estados">
-					  <option value="">-- selecciona un estado --</option>
-				</select>
-				</select>
-			  </fieldset>
-
+			  </fieldset>			  
 			  <button type="submit" class="btn btn-success">Crear</button>
 		</form>
    </div>
@@ -37,7 +32,7 @@
   	<thead>
 		<tr>
 			<th class="hidden-xs hidden-sm col-md-1">Id</th>
-            <th class="col-sm-5">Descripción</th>
+            <th class="col-sm-5">Resumen</th>
             <th class="col-sm-2">Fecha</th>
             <th class="col-sm-1">Importancia</th>
 			<th class="col-sm-1">Estado</th>
@@ -51,7 +46,7 @@
 			  <span ng-bind="incidencia.id">{{query}}
 		   </td>
 		   <td class="col-sm-5">
-			   <span ng-bind="incidencia.descripcion">
+			   <span ng-bind="incidencia.resumen">
 		   </td>
 		   <td class="col-sm-2">
 			   <span ng-bind="incidencia.fechaCreacion">

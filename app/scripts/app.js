@@ -8,7 +8,7 @@ angular.module('incidenciasApp', [
   'ui.sortable',
   'LocalStorageModule'
 ])
-  .config(['localStorageServiceProvider', '$routeProvider', function(localStorageServiceProvider, $routeProvider){
+.config(['localStorageServiceProvider', '$routeProvider', function(localStorageServiceProvider, $routeProvider){
     localStorageServiceProvider.setPrefix('ls');
     $routeProvider
       .when('/', {
@@ -26,4 +26,4 @@ angular.module('incidenciasApp', [
       .otherwise({
         redirectTo: '/'
       });
-  }]);
+}]);

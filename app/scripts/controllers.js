@@ -11,9 +11,10 @@ angular.module('incidenciasApp')
 	$scope.estados = Estado.getAll();
 
     $scope.create = function (incidencia) {
-	  Incidencia.create(incidencia);
+	  var creada = Incidencia.create(incidencia);
 	  $scope.incidencias = Incidencia.getAll();
 	  $scope.incidencia = '';
+	  return creada;
     };
 	
   }])
@@ -27,11 +28,13 @@ angular.module('incidenciasApp')
 	$scope.comentario = "";
 	
 	$scope.update = function (incidencia) {
-
-	  incidencia = Historia.actualiza(incidencia,$scope.comentario);
-	  Incidencia.update(incidencia);
-	  
+	  Incidencia.update($scope.actualizaHistoria(incidencia,$scope.comentario));	  
 	  $location.path( "/incidencias" );
+    };
+	
+	$scope.actualizaHistoria = function (incidencia,comentario) {		
+	  if (!comentario) return null;	  
+	  return Historia.actualiza(incidencia,comentario);	  	  
     };
 	
   }]);
