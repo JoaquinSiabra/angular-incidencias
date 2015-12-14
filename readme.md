@@ -17,15 +17,19 @@ Historias de usuario
 **para** resolver un problema con un proyecto.
 
 **Aceptación**:
+
 1. El formulario me obligará a introducir: 
 - un resumen de la incidencia,
 - un texto descriptivo. 
+
 2. El formulario me permitirá introducir el nivel de criticidad de la incidencia(bajo, medio, alto, crítico)
 
 3. El sistema recogerá transparentemente
 - el autor de la incidencia.
 - la fecha de reporte.
+
 4. El sistema asignará transparentemente a la nueva incidencia el estado "Abierta".
+
 5. El sistema inicializará transparentemente el historial de la incidencia (con "Abierta").
 
 ### 2. Cambiar una incidencia
