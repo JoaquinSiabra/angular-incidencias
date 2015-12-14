@@ -1,11 +1,17 @@
-Gestión de Incidencias
+﻿Gestión de Incidencias
 ======================
 
 Aplicación sencilla para la gestión de incidencias implementada en AngularJS
 
+Instalación
+------------
+- **npm install**
+- **bower install**
+- **grunt serve** o **grunt test**
+
 Historias de usuario
 --------------------
-___
+
 ### 1. Crear una incidencia
 **Como** cliente **quiero** crear una incidencia
 **para** resolver un problema con un proyecto.
@@ -44,7 +50,7 @@ El listado de cambios mostrará, para cada cambio:
 
 Esta versión: v1.0
 ------------
-___
+
 **Implementa**:
 - las historias 1, 2 y 3 sin tener en cuenta el tipo de usuario
 - diseño mínimamente adaptativo (el número de columnas de las tablas depende del tamaño de la pantalla)
@@ -53,6 +59,7 @@ ___
 **Para mejorar**:
 - las historias 1, 2 y 3, teniendo en cuenta el tipo de usuario (se muestran/ocultan opciones dependiendo de si se es: cliente, desarrollador, director)
 - diseño adaptativo sin tablas
+- unificar la view 'incidencia.html' y el formulario en 'incidencias.html' con import o directiva
 - validación completa de formularios
 - validación en las transiciones de estados de la incidencia
 
