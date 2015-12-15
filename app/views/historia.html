@@ -2,38 +2,38 @@
 
   <div class="page-header"><h1>Historia de Incidencia</h1></div>
    
-   <div class="well">
+  <div class="well">
 		 
-<div class="table-responsive"> 
-	<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Estado</th>
-            <th>Fecha del Cambio</th>
-            <th>Usuario</th>
-            <th>Comentario</th>
-        </tr>
-	</thead>
-	<tbody>
-	   <tr ng-repeat="cambioEstado in incidencia.historia | orderBy:'-fechaCambio'">
-		   <td>
-			  <span ng-bind="cambioEstado.estado">
-		   </td>
-		   <td>
-			   <span ng-bind="cambioEstado.fechaCambio">
-		   </td>
-		   <td>
-			   <span ng-bind="cambioEstado.user">
-		   </td>  
-		   <td>
-			  <span ng-bind="cambioEstado.comentario">
-		   </td>      			
-	   </tr>
-	</tbody>
-	</table>	
-  </div>  	
+		<div class="table-responsive"> 
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Estado</th>
+						<th>Fecha del Cambio</th>
+						<th>Usuario</th>
+						<th>Comentario</th>
+					</tr>
+				</thead>
+				<tbody>
+				   <tr ng-repeat="cambioEstado in incidencia.historia | orderBy:'-fechaCambio'">
+					   <td>
+						  <span ng-bind="cambioEstado.estado">
+					   </td>
+					   <td>
+						   <span ng-bind="cambioEstado.fechaCambio">
+					   </td>
+					   <td>
+						   <span ng-bind="cambioEstado.usuario">
+					   </td>  
+					   <td>
+						  <span ng-bind="cambioEstado.comentario">
+					   </td>      			
+				   </tr>
+				</tbody>
+			</table>	
+		  </div>  	
   </div>  
-  	<a class="btn btn-link" ng-href="#/incidenciar/" aria-label="Volver">Volver</button>
-
+  
+  <a class="btn btn-link" ng-href="#/incidenciar/" aria-label="Volver">Volver</a>
 
 </div>

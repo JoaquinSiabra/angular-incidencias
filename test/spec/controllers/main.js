@@ -3,7 +3,10 @@
 describe('Incidencias//', function () {
 	 
 	beforeEach(module('incidenciasApp'));
-		  
+	
+	
+	//------------------------------------------------------------------------
+	
 	describe('HistoriaUsuario_1_Crear_Incidencia//', function () {
 
 	  // Inicializacion del controlador y del mock del scope
@@ -60,6 +63,8 @@ describe('Incidencias//', function () {
 
 	});
 
+	//------------------------------------------------------------------------
+	
 	describe('HistoriaUsuario_2_CambiarIncidencia//', function () {
 	  
 	  var IncidenciaCtrl, scope;
@@ -80,10 +85,21 @@ describe('Incidencias//', function () {
 		  var actualizada = scope.actualizaHistoria(scope.incidencia,null);
 		  expect(actualizada).toBeNull();
 	  });
+	  
+	  it('debería modificarse una incidencia siendo el usuario del cambio User', function () {
+		  var actualizada = scope.actualizaHistoria(scope.incidencia,"ComentarioNuevo");
+		  expect(elQueHaCambiado(actualizada)).toBe("User");
+	  });
+			
+			//Para mejorar la legibilidad de las pruebas
+			function elQueHaCambiado(actualizada){
+				return actualizada.historia[1].usuario;
+			}
 
 	});
 
-
+	//------------------------------------------------------------------------
+	
 	describe('HistoriaUsuario_3_HistorialIncidencia//', function () {
 	  
 	  var IncidenciaCtrl, scope;
@@ -120,7 +136,6 @@ describe('Incidencias//', function () {
 			function ultimoCambio(){
 				return scope.incidencia.historia[0];
 			}
-
 	});
 	
 });

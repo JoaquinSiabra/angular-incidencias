@@ -9,8 +9,10 @@ angular.module('incidenciasApp', [
   'LocalStorageModule'
 ])
 .config(['localStorageServiceProvider', '$routeProvider', function(localStorageServiceProvider, $routeProvider){
-    localStorageServiceProvider.setPrefix('ls');
-    $routeProvider
+    
+	localStorageServiceProvider.setPrefix('ls');
+    
+	$routeProvider
       .when('/', {
         templateUrl: 'views/incidencias.html',
         controller: 'IncidenciasCtrl'
@@ -26,4 +28,5 @@ angular.module('incidenciasApp', [
       .otherwise({
         redirectTo: '/'
       });
+	  
 }]);

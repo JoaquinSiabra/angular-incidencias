@@ -56,15 +56,15 @@ Esta versión: v1.0
 ------------
 
 **Implementa**:
-- las historias 1, 2 y 3 sin tener en cuenta el tipo de usuario
+- las historias 1, 2 y 3 sin tener en cuenta el tipo de usuario (emplea un usuario genérico "User")
 - diseño mínimamente adaptativo (el número de columnas de las tablas depende del tamaño de la pantalla)
 - pruebas unitarias con Jasmine para las historias 1, 2 y 3
 
 **Para mejorar**:
-- las historias 1, 2 y 3, teniendo en cuenta el tipo de usuario (se muestran/ocultan opciones dependiendo de si se es: cliente, desarrollador, director)
-- diseño adaptativo sin tablas
-- unificar la view 'incidencia.html' y el formulario en 'incidencias.html' con import o directiva
+- las historias 1, 2 y 3, teniendo en cuenta el tipo de usuario (que se muestren/oculten opciones dependiendo de si se es: cliente, desarrollador, director)
+- valorar diseño adaptativo sin tablas
+- unificar la view 'incidencia.html' y el formulario en 'incidencias.html' (con import o directiva)
 - validación completa de formularios
-- validación en las transiciones de estados de la incidencia
+- validación en las transiciones de estados de la incidencia (habría que definir con el cliente el ciclo de vida de una incidencia)
 
 *Brahmsianitas vobiscum!*

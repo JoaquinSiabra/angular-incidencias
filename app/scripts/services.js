@@ -1,9 +1,27 @@
 'use strict';
 
+/* Los servicios se han implementado con localStorage. Para consumir un API podríamos
+usar Resource de manera similar a esta:  
+
+	angular.module('incidenciasApp')
+	  .factory('Incidencia', ['$resource',
+		function($resource){
+			return $resource('api/incidencia/:id', {}, {
+			   get: {method:'GET', isArray: false},
+			   getAll: {method:'GET', isArray: true},
+			   update: {method:'PUT', params: {id: '@id'}},
+			   create: {method:'POST', data: '@incidencia}
+			});
+	  }]);  
+  
+ En este caso, el controlador que llame al servicio tendrá que tener en cuenta la
+ naturaleza asíncrona del proceso y recoger el resultado en un callback.
+*/
+
 angular.module('incidenciasApp')
-  .factory('Incidencia', function (localStorageService, Estado, Importancia, Historia) {		
-	
-	
+
+  .factory('Incidencia', function (localStorageService, Estado, Importancia, Historia, Sesion) {		
+		
 	function getAll() {
       return localStorageService.get('incidencias') || inicializa();
     };
@@ -27,12 +45,12 @@ angular.module('incidenciasApp')
 	
 	function get(id){
 		var incidencias = getAll();
-		var filtered =incidencias.filter(function(incidencia){
+		var incidenciasFiltradas =incidencias.filter(function(incidencia){
 			if (incidencia.id==id){
 				return incidencia;
 			}
 		})
-		return filtered[0];
+		return incidenciasFiltradas[0];
 	}
 	
 	function update(incidenciaActualizada){
@@ -47,7 +65,7 @@ angular.module('incidenciasApp')
 		
 	function create(incidencia){
 		
-		if ((!incidencia.resumen)||(!incidencia.descripcion)) return null
+		if (invalida(incidencia)) return null;
 		
 		var extendida = extiende(incidencia);
 		save(extiende(extendida));
@@ -55,6 +73,10 @@ angular.module('incidenciasApp')
 		return extendida;
 	}
 	
+		function invalida(incidencia){
+			return (!incidencia.resumen) || (!incidencia.descripcion);
+		}
+		
 		function save(incidencia) {
 		  var incidencias = getAll();
 		  incidencias.push(incidencia);
@@ -64,7 +86,7 @@ angular.module('incidenciasApp')
 		function extiende(incidencia) {
 		  incidencia.id = generaId();
 		  incidencia.fechaCreacion = hoy();
-		  incidencia.usuario = 'User';
+		  incidencia.usuario = Sesion.usuarioActual();
 		  incidencia.estado = Estado.getDefault();		  
 		  incidencia.historia = [];
 		  incidencia.historia.push(Historia.getDefault());
@@ -78,13 +100,15 @@ angular.module('incidenciasApp')
 			}
 	
 	return {	
-		create: create,
-		update: update,
+		get:get,
 		getAll: getAll,
-		get:get
+		update: update,
+		create: create
 	};
 	
 })
+
+
  .factory('Importancia', function () {		
 		
 	function getAll() {
@@ -100,6 +124,8 @@ angular.module('incidenciasApp')
 		getDefault: getDefault
 	};
 })
+
+
  .factory('Estado', function () {			
 		
 	function getAll() {
@@ -115,7 +141,9 @@ angular.module('incidenciasApp')
 		getDefault: getDefault
 	};
 })
- .factory('Historia', function (Estado){			
+
+
+ .factory('Historia', function (Estado, Sesion){			
 		
 	function actualiza(incidencia,comentario) {
 		
@@ -135,7 +163,7 @@ angular.module('incidenciasApp')
     };
 	
 	function Cambio(incidencia,comentario){
-	  this.usuario = "User";
+	  this.usuario = Sesion.usuarioActual();
 	  this.fechaCambio = hoy();
 	  this.estado = incidencia.estado;
 	  this.comentario = comentario;
@@ -145,7 +173,19 @@ angular.module('incidenciasApp')
 		actualiza: actualiza,
 		getDefault: getDefault
 	};
-});  
+})
+
+ .factory('Sesion', function (){			
+		
+	function usuarioActual() {
+	  return "User";
+    };
+			
+    return {	
+		usuarioActual: usuarioActual
+	};
+	
+});    
 
 
 function hoy(){
